@@ -6,9 +6,15 @@ const ModalContext = React.createContext();
 export function ModalProvider({ children }) {
   const modalRef = useRef();
 
+  const contextValue = {
+    modalRef, // reference to modal div
+  };
+
   return (
     <>
-      <ModalContext.Provider>{children}</ModalContext.Provider>
+      <ModalContext.Provider value={contextValue}>
+        {children}
+      </ModalContext.Provider>
       <div ref={modalRef} />
     </>
   );
